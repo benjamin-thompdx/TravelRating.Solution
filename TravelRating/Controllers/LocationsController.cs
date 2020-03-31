@@ -19,9 +19,22 @@ namespace TravelRating.Controllers
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Location>> Get()
+    public ActionResult<IEnumerable<Location>> Get(string name, string city, string country)
     {
-      return _db.Locations.ToList();
+      var query = _db.Locations.AsQueryable();
+      if (name != null)
+      {
+        query = query.Where(entry => entry.Name == name);
+      }
+      if (city != null)
+      {
+        query = query.Where(entry => entry.City == city);
+      }
+      if (country != null)
+      {
+        query = query.Where(entry => entry.Country == country);
+      }
+      return query.ToList();
     }
 
      [HttpPost]
@@ -52,7 +65,5 @@ namespace TravelRating.Controllers
        _db.Locations.Remove(locationToDelete);
        _db.SaveChanges();
      }
-
-
   }
 }

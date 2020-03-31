@@ -13,9 +13,9 @@ namespace TravelRating.Migrations
                 {
                     LocationId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    Country = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false),
+                    City = table.Column<string>(nullable: false),
+                    Country = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,8 +28,8 @@ namespace TravelRating.Migrations
                 {
                     ExperienceId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Author = table.Column<string>(nullable: true),
-                    Review = table.Column<string>(nullable: true),
+                    Author = table.Column<string>(nullable: false),
+                    Review = table.Column<string>(nullable: false),
                     Rating = table.Column<int>(nullable: false),
                     LocationId = table.Column<int>(nullable: false)
                 },
@@ -42,6 +42,28 @@ namespace TravelRating.Migrations
                         principalTable: "Locations",
                         principalColumn: "LocationId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Locations",
+                columns: new[] { "LocationId", "City", "Country", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Hanoi", "Vietnam", "Ha Long Bay" },
+                    { 2, "Reykjavik", "Iceland", "Thingvellir Park" },
+                    { 3, "Kerry", "Ireland", "Killarney National Park" },
+                    { 4, "New York", "United States", "Clock Walk" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Experiences",
+                columns: new[] { "ExperienceId", "Author", "LocationId", "Rating", "Review" },
+                values: new object[,]
+                {
+                    { 1, "Ben's Mom", 3, 2, "Hanoi" },
+                    { 2, "Matt's Mom", 3, 2, "Reykjavik" },
+                    { 3, "Katy's Mom", 3, 2, "Kerry" },
+                    { 4, "Katy's Kids' Mom", 3, 2, "New York" }
                 });
 
             migrationBuilder.CreateIndex(

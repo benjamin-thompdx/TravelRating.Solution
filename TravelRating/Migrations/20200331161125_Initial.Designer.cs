@@ -8,8 +8,8 @@ using TravelRating.Models;
 namespace TravelRating.Migrations
 {
     [DbContext(typeof(TravelRatingContext))]
-    [Migration("20200330185704_SeedData")]
-    partial class SeedData
+    [Migration("20200331161125_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,19 +23,55 @@ namespace TravelRating.Migrations
                     b.Property<int>("ExperienceId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Author");
+                    b.Property<string>("Author")
+                        .IsRequired();
 
                     b.Property<int>("LocationId");
 
                     b.Property<int>("Rating");
 
-                    b.Property<string>("Review");
+                    b.Property<string>("Review")
+                        .IsRequired();
 
                     b.HasKey("ExperienceId");
 
                     b.HasIndex("LocationId");
 
                     b.ToTable("Experiences");
+
+                    b.HasData(
+                        new
+                        {
+                            ExperienceId = 1,
+                            Author = "Ben's Mom",
+                            LocationId = 3,
+                            Rating = 2,
+                            Review = "Hanoi"
+                        },
+                        new
+                        {
+                            ExperienceId = 2,
+                            Author = "Matt's Mom",
+                            LocationId = 3,
+                            Rating = 2,
+                            Review = "Reykjavik"
+                        },
+                        new
+                        {
+                            ExperienceId = 3,
+                            Author = "Katy's Mom",
+                            LocationId = 3,
+                            Rating = 2,
+                            Review = "Kerry"
+                        },
+                        new
+                        {
+                            ExperienceId = 4,
+                            Author = "Katy's Kids' Mom",
+                            LocationId = 3,
+                            Rating = 2,
+                            Review = "New York"
+                        });
                 });
 
             modelBuilder.Entity("TravelRating.Models.Location", b =>
@@ -43,11 +79,14 @@ namespace TravelRating.Migrations
                     b.Property<int>("LocationId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("City");
+                    b.Property<string>("City")
+                        .IsRequired();
 
-                    b.Property<string>("Country");
+                    b.Property<string>("Country")
+                        .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("LocationId");
 

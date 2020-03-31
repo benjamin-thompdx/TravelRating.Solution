@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TravelRating.Models
 {
@@ -10,8 +11,11 @@ namespace TravelRating.Models
     }
 
     public int LocationId { get; set; }
+    [Required]
     public string Name { get; set; }
+    [Required]
     public string City { get; set; }
+    [Required]
     public string Country { get; set; }
     public virtual ICollection<Experience> Experiences { get; set; }
   }
