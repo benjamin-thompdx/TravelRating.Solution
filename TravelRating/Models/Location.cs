@@ -17,6 +17,7 @@ namespace TravelRating.Models
     public string City { get; set; }
     [Required]
     public string Country { get; set; }
+    
     public virtual ICollection<Experience> Experiences { get; set; }
   }
 }

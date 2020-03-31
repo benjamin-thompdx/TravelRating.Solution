@@ -40,17 +40,30 @@ namespace TravelRating.Controllers
      [HttpPost]
      public void Post([FromBody] Experience experience)
      {
-       _db.Experiences.Add(experience);
-       _db.SaveChanges();
+        _db.Experiences.Add(experience);
+        _db.SaveChanges();
      }
 
      [HttpGet("{id}")]
      public ActionResult<Experience> GetAction(int id)
      {
-       return _db.Experiences.FirstOrDefault(entry => entry.ExperienceId == id);
+        return _db.Experiences.FirstOrDefault(entry => entry.ExperienceId == id);
      }
 
-     [HttpPut("{id}")]
+    // Edit Method for Application
+
+    //  [HttpPut("{id}")]
+    //  public void Put(int id, [FromBody] Experience experience, string author)
+    //  {
+    //     experience.ExperienceId = id;
+    //     if (experience.Author == author)
+    //     {
+    //       _db.Entry(experience).State = EntityState.Modified;
+    //       _db.SaveChanges();
+    //     }
+    //  }
+
+    [HttpPut("{id}")]
      public void Put(int id, [FromBody] Experience experience)
      {
        experience.ExperienceId = id;
@@ -58,12 +71,25 @@ namespace TravelRating.Controllers
        _db.SaveChanges();
      }
 
-     [HttpDelete("{id}")]
-     public void Delete(int id)
-     {
-       var experienceToDelete = _db.Experiences.FirstOrDefault(entry => entry.ExperienceId == id);
-       _db.Experiences.Remove(experienceToDelete);
-       _db.SaveChanges();
-     }
+    // Delete Method for Application
+
+    //  [HttpDelete("{id}")]
+    //  public void Delete(int id, string author)
+    //  {
+    //     var experienceToDelete = _db.Experiences.FirstOrDefault(entry => entry.ExperienceId == id);
+    //     if (experienceToDelete.Author == author)
+    //     {
+    //       _db.Experiences.Remove(experienceToDelete);
+    //       _db.SaveChanges();
+    //     }
+    //  }
+
+      [HttpDelete("{id}")]
+      public void Delete(int id)
+      {
+        var experienceToDelete = _db.Experiences.FirstOrDefault(entry => entry.ExperienceId == id);
+        _db.Experiences.Remove(experienceToDelete);
+        _db.SaveChanges();
+      }
   }
 }
