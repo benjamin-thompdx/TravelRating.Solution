@@ -3,10 +3,13 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TravelRating.Models;
-
+using Microsoft.AspNetCore.Authorization;
+using TravelRating.Services;
+using TravelRating.Entities;
 
 namespace TravelRating.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   [ApiController]
   public class LocationsController : ControllerBase
@@ -18,6 +21,7 @@ namespace TravelRating.Controllers
       _db = db;
     }
 
+    // [AllowAnonymous]
     [HttpGet]
     public ActionResult<IEnumerable<Location>> Get(string name, string city, string country)
     {

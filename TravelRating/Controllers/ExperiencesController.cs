@@ -3,19 +3,24 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TravelRating.Models;
-
+using Microsoft.AspNetCore.Authorization;
+using TravelRating.Services;
+using TravelRating.Entities;
 
 namespace TravelRating.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   [ApiController]
   public class ExperiencesController : ControllerBase
   {
     private TravelRatingContext _db;
+    private IUserService _userService;
 
-    public ExperiencesController(TravelRatingContext db)
+    public ExperiencesController(TravelRatingContext db, IUserService userService)
     {
       _db = db;
+      _userService = userService;
     }
 
     [HttpGet]
@@ -37,18 +42,18 @@ namespace TravelRating.Controllers
       return query.ToList();
     }
 
-     [HttpPost]
-     public void Post([FromBody] Experience experience)
-     {
-        _db.Experiences.Add(experience);
-        _db.SaveChanges();
-     }
+    [HttpPost]
+    public void Post([FromBody] Experience experience)
+    {
+      _db.Experiences.Add(experience);
+      _db.SaveChanges();
+    }
 
-     [HttpGet("{id}")]
-     public ActionResult<Experience> GetAction(int id)
-     {
-        return _db.Experiences.FirstOrDefault(entry => entry.ExperienceId == id);
-     }
+    [HttpGet("{id}")]
+    public ActionResult<Experience> GetAction(int id)
+    {
+      return _db.Experiences.FirstOrDefault(entry => entry.ExperienceId == id);
+    }
 
     // Edit Method for Application
 
@@ -65,11 +70,11 @@ namespace TravelRating.Controllers
 
     [HttpPut("{id}")]
      public void Put(int id, [FromBody] Experience experience)
-     {
-       experience.ExperienceId = id;
-       _db.Entry(experience).State = EntityState.Modified;
-       _db.SaveChanges();
-     }
+    {
+      experience.ExperienceId = id;
+      _db.Entry(experience).State = EntityState.Modified;
+      _db.SaveChanges();
+    }
 
     // Delete Method for Application
 
