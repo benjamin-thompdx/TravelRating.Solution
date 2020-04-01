@@ -1,3 +1,6 @@
+using TravelRating.Models;
+using System.Collections.Generic;
+
 namespace TravelRating.Entities
 {
   public class User
