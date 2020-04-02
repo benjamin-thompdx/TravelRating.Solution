@@ -1,6 +1,6 @@
 # _Travel Rating API_
 
-#### By _**Benjamin Thom, Stephanie Podolak, Matt Taylor, & K. Wicz**_
+#### By _**Benjamin Thom, Steph Podolak, Matt Taylor, & K. Wicz**_
 
 
 ## Description
@@ -20,7 +20,7 @@ GET https://localhost:5000/locations
 ```
 #### Path Parameters
 | Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
+| :---: | :---: | :---: | --- |
 | name | string | none | Returns matches by destination name.
 | city | string | none | Returns all destinations in specified city. |
 | country | string | none | Returns all destinations in specified country. |
@@ -34,7 +34,7 @@ https://localhost:5000/api/locations/?name=ha+long+bay&city=hanoi&country=vietna
 
 #### Path Parameters
 | Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
+| :---: | :---: | :---: | --- |
 |Author | string | none | Returns all experiences made by review author. |
 |Review | string | none | Returns experience by exact review given. |
 |Rating | int | none | Returns all experiences with a specific rating value between 1 and 5|
@@ -43,12 +43,6 @@ https://localhost:5000/api/locations/?name=ha+long+bay&city=hanoi&country=vietna
 ```sh
 https://localhost:5000/api/experiences/?author=ben&review=hanoi+is+quite+a+beaut!&rating=5
 ```
-
-
-
-## Database Schema
-
-![Schema Preview](/TravelRating/wwwroot/img/db-schema.png)
 
 ## Setup/Installation Requirements
 
@@ -108,10 +102,13 @@ _Have a bug or an issue with this application? [Open a new issue](https://github
 * _C#_
 * _.NET Core 2.2_
 * _ASP.NET Core MVC_
-* _MySQL_
-* _EF Core 2.2.6_
+* _MySQL 2.2.0_
+* _EF Core 2.2.0_
 * _ASP.NET Core Identity_
 * _Razor 2.2.0_
+* _ASP.NET Core JSON Web Token Authentication & Authorization_
+* _NSwag 13.3.0_
+* _[Postman](postman.com)_
 
 ## License
 
