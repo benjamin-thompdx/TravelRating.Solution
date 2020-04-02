@@ -24,7 +24,7 @@ namespace TravelRating.Models
         );
       builder.Entity<Experience>()
         .HasData(
-          new Experience { ExperienceId = 1, Author = "Ben", Review = "Hanoi", Rating = 2, LocationId = 3},
+          new Experience { ExperienceId = 1, Author = "Ben", Review = "Hanoi is quite a beaut!", Rating = 5, LocationId = 3},
           new Experience { ExperienceId = 2, Author = "Matt", Review = "Reykjavik", Rating = 2, LocationId = 3},
           new Experience { ExperienceId = 3, Author = "Katy", Review = "Kerry", Rating = 2, LocationId = 3},
           new Experience { ExperienceId = 4, Author = "Steph", Review = "New York", Rating = 2, LocationId = 3}
