@@ -30,6 +30,8 @@ namespace TravelRating
 					opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 			
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+			services.AddSwaggerDocument();
 			
 			services.AddCors();
 
@@ -96,6 +98,11 @@ namespace TravelRating
 					.AllowAnyHeader());
 
 			app.UseAuthentication();
+
+			// Incorporate Swagger
+			app.UseStaticFiles();
+			app.UseOpenApi();
+    	app.UseSwaggerUi3();
 
 			app.UseMvc();
 		}
