@@ -8,42 +8,6 @@
 _An ASP.NET API that allows users to read and write reviews about travel destinations around the world, categorized by city and country._
 
 
-## API Endpoints
-
-### Locations
-
-Retrieve a list of travel destinations around the world.
-
-#### HTTP Request
-```sh
-GET https://localhost:5000/locations
-```
-#### Path Parameters
-| Parameter | Type | Default | Description |
-| :---: | :---: | :---: | --- |
-| name | string | none | Returns matches by destination name.
-| city | string | none | Returns all destinations in specified city. |
-| country | string | none | Returns all destinations in specified country. |
-
-#### Example Query
-```sh
-https://localhost:5000/api/locations/?name=ha+long+bay&city=hanoi&country=vietnam
-```
-
-### Experiences
-
-#### Path Parameters
-| Parameter | Type | Default | Description |
-| :---: | :---: | :---: | --- |
-|Author | string | none | Returns all experiences made by review author. |
-|Review | string | none | Returns experience by exact review given. |
-|Rating | int | none | Returns all experiences with a specific rating value between 1 and 5|
-
-#### Example Query
-```sh
-https://localhost:5000/api/experiences/?author=ben&review=hanoi+is+quite+a+beaut!&rating=5
-```
-
 ## Setup/Installation Requirements
 
 ### 1.  Install .NET Core
@@ -73,10 +37,9 @@ dotnet restore
 dotnet build
 ```
 
-### 4. Create the database and tables
-Enter the following to build your database and tables for the program:
+### 4. Update the database and tables
+Enter the following to update your database and tables for the program:
 ```sh
-dotnet ef migrations add Initial
 dotnet ef database update
 ```
 
@@ -89,6 +52,74 @@ Hold ```command``` while clicking the link in your local terminal to your local 
 ```sh
 http://127.0.0.1:5000
 ```
+
+## API Endpoints
+_Once you have installed this program, you can use these endpoints on your local host in your browser._
+
+Base URL: ```https://localhost:5000```
+
+### Users
+
+See all users and get user authentication.
+
+#### HTTP Requests
+```sh
+GET /users/
+POST /users/authenticate
+```
+
+No additonal parameters for this route!
+
+### Locations
+
+Interact with the data for travel destinations around the world.
+
+#### HTTP Requests
+```sh
+GET /api/locations
+POST /api/locations
+GET /api/locations/{id}
+PUT /api/locations/{id}
+DELETE /api/locations/{id}
+```
+#### Path Parameters
+| Parameter | Type | Default | Description |
+| :---: | :---: | :---: | --- |
+| name | string | none | Returns matches by destination name.
+| city | string | none | Returns all destinations in specified city. |
+| country | string | none | Returns all destinations in specified country. |
+
+#### Example Query
+```sh
+https://localhost:5000/api/locations/?name=ha+long+bay&city=hanoi&country=vietnam
+```
+
+### Experiences
+
+Interact with the data for reviews that users left for different locations.
+
+#### HTTP Requests
+```sh
+GET /api/experiences
+POST /api/experiences
+GET /api/experiences/{id}
+PUT /api/experiences/{id}
+DELETE /api/experiences/{id}
+```
+
+#### Path Parameters
+| Parameter | Type | Default | Description |
+| :---: | :---: | :---: | --- |
+|Author | string | none | Returns all experiences made by review author. |
+|Review | string | none | Returns experience by exact review given. |
+|Rating | int | none | Returns all experiences with a specific rating value between 1 and 5|
+
+#### Example Query
+```sh
+https://localhost:5000/api/experiences/?author=ben&review=hanoi+is+quite+a+beaut!&rating=5
+```
+
+
 
 ## Known Bugs
 
