@@ -10,6 +10,7 @@ using TravelRating.Services;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc.Versioning;
 
 
 namespace TravelRating
@@ -74,7 +75,16 @@ namespace TravelRating
 			//   options.Password.RequireNonAlphanumeric = false;
 			//   options.Password.RequireUppercase = false;
 			//   options.Password.RequiredUniqueChars = 0;
-			// });         
+			// });  
+
+			services.AddApiVersioning(config =>
+			{
+					// Specify the default API Version as 1.0
+					config.DefaultApiVersion = new ApiVersion(876, 1);
+					// If the client hasn't specified the API version in the request, use the default API version number 
+					config.AssumeDefaultVersionWhenUnspecified = true;
+					config.ReportApiVersions = true;
+			});      
 
 		}
 
